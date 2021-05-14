@@ -645,6 +645,15 @@
             <version>${db2jcc.version}</version>
         </dependency>
 
+        <!--增加达梦数据库的JDBC驱动包-->
+        <dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>dm-jdbc</artifactId>
+            <version>${dm.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/lib/DmJdbcDriver18.jar</systemPath>
+        </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
