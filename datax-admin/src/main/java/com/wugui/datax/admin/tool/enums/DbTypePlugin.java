@@ -12,6 +12,8 @@ import lombok.Getter;
  *
  * @author jiangyang
  * @date 2020/12/24
+ *
+ * 增加达梦数据源类型插件
  */
 @Getter
 public enum DbTypePlugin {
@@ -30,7 +32,8 @@ public enum DbTypePlugin {
     HBASE20XSQL(DbType.HBASE20XSQL, Hbase20xsqlMeta.getInstance(), Hbase20XsqlQueryTool.class, null, null),
     HBASE(DbType.HBASE, null, null, new HBaseReader(), new HBaseWriter()),
     MONGODB(DbType.MONGODB, null, null, new MongoDBReader(), new MongoDBWriter()),
-    PHOENIX(DbType.PHOENIX, null, null, null, null);
+    PHOENIX(DbType.PHOENIX, null, null, null, null),
+    DM(DbType.DM, DMDatabaseMeta.getInstance(),DMQueryTool.class, new DMReader(), new DMWriter());
 
     private DbType dbType;
     private DatabaseInterface databaseInterface;

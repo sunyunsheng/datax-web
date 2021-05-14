@@ -116,6 +116,7 @@ public abstract class BaseDataSource {
         case CLICKHOUSE:
         case MYSQL:
         case ORACLE:
+        case DM:
         case POSTGRESQL:
           separator = "?";
           break;

@@ -56,7 +56,7 @@
 
         <phoenix.version>5.0.0-HBase-2.0</phoenix.version>
 
-        <druid.version>1.2.3</druid.version>
+        <druid.version>1.2.6</druid.version>
         <db2jcc.version>db2jcc4</db2jcc.version>
     </properties>
 

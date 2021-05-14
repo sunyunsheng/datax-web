@@ -23,6 +23,10 @@ public enum DbType {
      * 7 db2
      * 8 greenplum
      * 9 hbase20xsql
+     * 10 hbase
+     * 11 mongodb
+     * 12 phoenix
+     * 13 dm
      */
     MYSQL(0, Constants.COM_MYSQL_JDBC_DRIVER, MySQLDataSource.class, "mysql"),
     POSTGRESQL(1, Constants.ORG_POSTGRESQL_DRIVER, PostgreDataSource.class, "postgresql"),
@@ -36,7 +40,8 @@ public enum DbType {
     HBASE20XSQL(9, null, null, "hbase20xsql"),
     HBASE(10, null, null, "hbase"),
     MONGODB(11, null, null, "mongodb"),
-    PHOENIX(12, Constants.COM_PHOENIX_JDBC_DRIVER, PhoenixDataSource.class, "phoenix");
+    PHOENIX(12, Constants.COM_PHOENIX_JDBC_DRIVER, PhoenixDataSource.class, "phoenix"),
+    DM(13,Constants.DM_JDBC_DRIVER_DMDRIVER,DmDataSource.class,"dm");
 
     DbType(int code, String driver, Class<? extends BaseDataSource> clazz, String descp) {
         this.code = code;

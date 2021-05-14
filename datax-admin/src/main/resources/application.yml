@@ -30,8 +30,8 @@ spring:
     port: 25
     #username: xxx@qq.com
     #password: xxx
-    username: ${MAIL_USERNAME:username}
-    password: ${MAIL_PASSWORD:password}
+    username: ${MAIL_USERNAME:5154687@qq.com}
+    password: ${MAIL_PASSWORD:sxx1987*}
     properties:
       mail:
         smtp:

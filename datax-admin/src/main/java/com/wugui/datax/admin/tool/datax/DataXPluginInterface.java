@@ -10,7 +10,7 @@ package com.wugui.datax.admin.tool.datax;
  */
 public interface DataXPluginInterface {
     /**
-     * 获取reader插件名称
+     * 获取reader\writer插件名称
      *
      * @return
      */
