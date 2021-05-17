@@ -242,7 +242,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
      * @param tableName String
      * @return List<String>
      */
-    private List<String> getPrimaryKeys(final String tableName) {
+    public List<String> getPrimaryKeys(final String tableName) {
         List<String> res = Lists.newArrayList();
         String sqlQueryPrimaryKey = sqlBuilder.getSQLQueryPrimaryKey();
         try {

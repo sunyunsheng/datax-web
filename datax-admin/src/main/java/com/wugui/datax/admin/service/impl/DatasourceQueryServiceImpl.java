@@ -131,6 +131,7 @@ public class DatasourceQueryServiceImpl implements DatasourceQueryService {
      * @param parameter data source parameters
      * @return true if connect successfully, otherwise false
      */
+    @Override
     public boolean checkConnection(DbType type, String parameter) {
         Boolean isConnection = false;
         Connection con = getConnection(type, parameter);
@@ -143,5 +144,34 @@ public class DatasourceQueryServiceImpl implements DatasourceQueryService {
             }
         }
         return isConnection;
+    }
+
+    /**
+     * 根据数据源id、schema、tableName 获取指定表的主键字段
+     * @param dataSourceId 数据源ID
+     * @param schema  schema
+     * @param tableName 表名
+     * @return  表的主键字段
+     * @throws SQLException 异常
+     * @author sunyunsheng
+     * @date 2021-05-17 17:28
+     */
+    @Override
+    public List<String> getTablePrimaryKeys(Long dataSourceId, String schema, String tableName) throws SQLException {
+        //获取数据源对象
+        JobDatasource datasource = jobDatasourceService.getById(dataSourceId);
+        //queryTool组装
+        if (ObjectUtil.isNull(datasource)) {
+            return Lists.newArrayList();
+        }
+        if (DbType.DM.equals(datasource.getType())) {
+            return new DMQueryTool(datasource.getType(),datasource.getConnectionParams()).getPrimaryKeys(tableName);
+        } else if (DbType.ORACLE.equals(datasource.getType())) {
+            return new OracleQueryTool(datasource.getType(),datasource.getConnectionParams()).getPrimaryKeys(tableName);
+        } else {
+            BaseQueryTool queryTool = QueryToolFactory.getByDbType(datasource.getType(),datasource.getConnectionParams());
+            return queryTool.getPrimaryKeys(tableName);
+        }
+
     }
 }

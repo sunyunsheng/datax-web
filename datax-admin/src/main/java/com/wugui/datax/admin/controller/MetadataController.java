@@ -102,4 +102,28 @@ public class MetadataController extends BaseController {
     public R<List<String>> getColumnsByQuerySql(Long datasourceId, String querySql) throws SQLException {
         return success(datasourceQueryService.getColumnsByQuerySql(datasourceId, querySql));
     }
+
+    /**
+     * 根据数据源id和schema、tablename获取指定表的主键字段
+     * @param datasourceId 数据源id
+     * @param schema schema
+     * @param tableName 表名
+     * @return 表的主键字段
+     * @author sunyunsheng
+     * @date 2021-05-17 17:25
+     */
+    @GetMapping("/getTablePrimaryKeys")
+    @ApiOperation("根据数据源id和schema、tablename获取指定表的主键字段")
+    public R<List<String>> getTablePrimaryKeys(Long datasourceId,String schema,String  tableName)
+    {
+        try
+        {
+           return  success(datasourceQueryService.getTablePrimaryKeys(datasourceId,schema,tableName));
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return failed(e.getMessage());
+        }
+
+    }
 }

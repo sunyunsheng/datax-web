@@ -77,4 +77,6 @@ public interface DatasourceQueryService {
     List<String> getDbSchema(Long id);
 
     boolean checkConnection(DbType type, String parameter);
+
+    List<String> getTablePrimaryKeys(Long dataSourceId,String schema,String tableName) throws SQLException;
 }
