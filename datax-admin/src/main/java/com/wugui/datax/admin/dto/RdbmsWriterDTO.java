@@ -18,4 +18,6 @@ public class RdbmsWriterDTO implements Serializable {
     private String preSql;
 
     private String postSql;
+
+    private String writeMode;
 }

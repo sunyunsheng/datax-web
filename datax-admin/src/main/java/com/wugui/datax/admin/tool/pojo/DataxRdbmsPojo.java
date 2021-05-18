@@ -55,4 +55,8 @@ public class DataxRdbmsPojo {
      * where
      */
     private String whereParam;
+    /**
+     * 写入模式
+     */
+    private String writeMode;
 }

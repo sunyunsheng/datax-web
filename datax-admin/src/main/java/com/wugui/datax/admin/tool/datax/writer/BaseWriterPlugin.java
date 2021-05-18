@@ -49,6 +49,7 @@ public abstract class BaseWriterPlugin extends BaseDataXPlugin implements DataxW
         dataxPluginPojo.setRdbmsColumns(writerColumns);
         dataxPluginPojo.setPreSql(rdbmsWriterDto.getPreSql());
         dataxPluginPojo.setPostSql(rdbmsWriterDto.getPostSql());
+        dataxPluginPojo.setWriteMode(rdbmsWriterDto.getWriteMode());
         return build(dataxPluginPojo);
     }
 
@@ -66,6 +67,7 @@ public abstract class BaseWriterPlugin extends BaseDataXPlugin implements DataxW
         parameter.put("column", plugin.getRdbmsColumns());
         parameter.put("preSql", splitSql(plugin.getPreSql()));
         parameter.put("postSql", splitSql(plugin.getPostSql()));
+        parameter.put("writeMode",plugin.getWriteMode());
 
         Map<String, Object> writer = Maps.newLinkedHashMap();
         writer.put("name", getName());

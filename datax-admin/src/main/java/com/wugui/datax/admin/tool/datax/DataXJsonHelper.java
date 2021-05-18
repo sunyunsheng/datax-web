@@ -128,8 +128,8 @@ public class DataXJsonHelper {
             case SQLSERVER:
                 return String.format("[%s]", column);
             case POSTGRESQL:
-            case ORACLE:
-                return String.format("\"%s\"", column);
+            /*case ORACLE:
+                return String.format("\"%s\"", column);*/
             default:
                 return column;
         }

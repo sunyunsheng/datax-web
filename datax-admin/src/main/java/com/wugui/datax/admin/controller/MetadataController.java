@@ -118,6 +118,7 @@ public class MetadataController extends BaseController {
     {
         try
         {
+
            return  success(datasourceQueryService.getTablePrimaryKeys(datasourceId,schema,tableName));
         }catch (Exception e)
         {
