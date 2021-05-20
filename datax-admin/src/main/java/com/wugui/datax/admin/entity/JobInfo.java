@@ -1,6 +1,7 @@
 package com.wugui.datax.admin.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -122,4 +123,8 @@ public class JobInfo {
 
 	@TableField(exist=false)
 	private String userName;
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@ApiModelProperty("上次调度成功，执行成功的调度-时间")
+	private Date lastSuccessTriggerTime;
 }

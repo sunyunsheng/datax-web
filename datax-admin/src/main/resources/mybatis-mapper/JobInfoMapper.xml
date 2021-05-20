@@ -52,6 +52,8 @@
 		<result column="inc_start_id" property="incStartId" />
 		<result column="increment_type" property="incrementType" />
 		<result column="datasource_id" property="datasourceId" />
+
+		<result column="last_success_trigger_time" property="lastSuccessTriggerTime"/>
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -96,11 +98,18 @@
 		p.name as project_name,
 		u.username
 	</sql>
+	<sql id="JobLog_Column_List">
+		l.last_success_trigger_time
+	</sql>
 	<select id="pageList" parameterType="java.util.HashMap" resultMap="JobInfo">
-		SELECT <include refid="Base_Column_List" />,<include refid="Project_Column_List" />
+		SELECT <include refid="Base_Column_List" />,<include refid="Project_Column_List" />,<include refid="JobLog_Column_List"></include>
 		FROM job_info AS t
 		INNER JOIN job_project p on t.project_id=p.id
 		INNER JOIN job_user u on t.user_id = u.id
+		LEFT JOIN
+		   (select job_group,job_id, max(trigger_time) as last_success_trigger_time from job_log
+		        where handle_code=200 and trigger_code=200 group by job_group,job_id ) l
+		ON l.job_group = t.job_group and l.job_id=t.id
 		<trim prefix="WHERE" prefixOverrides="AND | OR" >
 			<if test="jobGroup gt 0">
 				AND t.job_group = #{jobGroup}
