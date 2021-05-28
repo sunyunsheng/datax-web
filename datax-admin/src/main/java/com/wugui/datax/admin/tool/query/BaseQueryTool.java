@@ -391,6 +391,12 @@ public abstract class BaseQueryTool implements QueryToolInterface {
         return res;
     }
 
+    /**
+     * 此处将maxId加1，maxId为表中实际记录的最大ID，datax配置文件中querysql的自增ID增量同步时，
+     * endId是小于的条件，这样就会导致本次同步时maxId对应的记录无法同步，加1可保证当前表中含最大ID的记录也可以同步
+     * 而下一次同步时 起始ID就可以是上次最大ID加1的值，而sql条件是 大于等于起始ID的，这样可以保证没有遗漏的数据
+     * 2021-05-23 sunyunsheng
+     */
     @Override
     public long getMaxIdVal(final String tableName, final String primaryKey) {
         long maxVal = 0;
@@ -402,7 +408,7 @@ public abstract class BaseQueryTool implements QueryToolInterface {
         } catch (SQLException e) {
             logger.error("[getMaxIdVal Exception] --> the exception message is:" + e.getMessage());
         }
-        return maxVal;
+        return maxVal+1;
     }
 
     private String getSQLMaxID(final String tableName, final String primaryKey) {
