@@ -105,6 +105,7 @@ public class JobFileAppender {
             try {
                 logFile.createNewFile();
             } catch (IOException e) {
+                logger.info("日志文件路径:"+logFileName);
                 logger.error(e.getMessage(), e);
                 return;
             }
