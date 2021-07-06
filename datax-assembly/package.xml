@@ -23,7 +23,7 @@
         <!--<fileSet>
         <directory>../doc</directory>
         <outputDirectory>doc</outputDirectory>
-        </fileSet>-->
+        </fileSet>
         <fileSet>
             <directory>../</directory>
             <lineEnding>unix</lineEnding>
@@ -32,6 +32,6 @@
                 <include>userGuid.md</include>
             </includes>
             <outputDirectory>/</outputDirectory>
-        </fileSet>
+        </fileSet>-->
     </fileSets>
 </assembly>
